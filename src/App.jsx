@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { HAYDAY_ITEMS } from "./data/haydayGoods";
+
 
 /** =========================
  *  Kttermgame — Hay Day Shop
@@ -36,28 +37,8 @@ const CATEGORIES = [
 ];
 
 // Demo items (replace img with Hay Day Wiki URLs; expand to 150+ later)
-const ITEMS = [
-  { id: "wheat", name: "Wheat", nameTh: "ข้าวสาลี", category: "farm", inStock: true, img: "https://placehold.co/256x256?text=Wheat" },
-  { id: "corn", name: "Corn", nameTh: "ข้าวโพด", category: "farm", inStock: true, img: "https://placehold.co/256x256?text=Corn" },
-  { id: "soy", name: "Soybean", nameTh: "ถั่วเหลือง", category: "farm", inStock: false, img: "https://placehold.co/256x256?text=Soy" },
 
-  { id: "milk", name: "Milk", nameTh: "นมวัว", category: "dairy", inStock: true, img: "https://placehold.co/256x256?text=Milk" },
-  { id: "cream", name: "Cream", nameTh: "ครีม", category: "dairy", inStock: true, img: "https://placehold.co/256x256?text=Cream" },
-  { id: "butter", name: "Butter", nameTh: "เนย", category: "dairy", inStock: false, img: "https://placehold.co/256x256?text=Butter" },
 
-  { id: "bread", name: "Bread", nameTh: "ขนมปัง", category: "bakery", inStock: true, img: "https://placehold.co/256x256?text=Bread" },
-  { id: "cookie", name: "Cookie", nameTh: "คุกกี้", category: "bakery", inStock: true, img: "https://placehold.co/256x256?text=Cookie" },
-
-  { id: "brown_sugar", name: "Brown Sugar", nameTh: "น้ำตาลทรายแดง", category: "sugar", inStock: true, img: "https://placehold.co/256x256?text=Sugar" },
-  { id: "syrup", name: "Syrup", nameTh: "ไซรัป", category: "sugar", inStock: false, img: "https://placehold.co/256x256?text=Syrup" },
-
-  { id: "axe", name: "Axe", nameTh: "ขวาน", category: "tools", inStock: true, img: "https://placehold.co/256x256?text=Axe" },
-  { id: "saw", name: "Saw", nameTh: "เลื่อย", category: "tools", inStock: false, img: "https://placehold.co/256x256?text=Saw" },
-
-  { id: "deed", name: "Land Deed", nameTh: "เอกสารที่ดิน", category: "expand", inStock: true, img: "https://placehold.co/256x256?text=Deed" },
-  { id: "mallet", name: "Mallet", nameTh: "ค้อน", category: "expand", inStock: true, img: "https://placehold.co/256x256?text=Mallet" },
-  { id: "stake", name: "Marker Stake", nameTh: "หลักปักเขต", category: "expand", inStock: false, img: "https://placehold.co/256x256?text=Stake" },
-];
 
 function clsx(...xs) { return xs.filter(Boolean).join(" "); }
 
@@ -216,8 +197,8 @@ export default function App() {
 
   return (
     <div className="mx-auto min-h-screen w-full max-w-md">
-      {/* header */}
-      <div className="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-gray-100">
+      {/* header */}   
+    <div className="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-gray-100">
         <div className="px-5 pt-5 pb-4">
           <div className="flex items-start justify-between gap-3">
             <div>
@@ -229,7 +210,6 @@ export default function App() {
               LINE
             </a>
           </div>
-
           {/* Decoration service card */}
           <div className="mt-4 rounded-3xl border border-gray-200 bg-white p-4 shadow-sm">
             <div className="flex items-start gap-3">
@@ -290,6 +270,7 @@ export default function App() {
                 <div className="relative">
                   <img src={it.img} alt={it.name} className="h-28 w-full rounded-2xl object-contain bg-gray-50"
                        style={!it.inStock ? { filter:"grayscale(100%)", opacity:0.55 } : {}} />
+                  
                   {!it.inStock && (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="rounded-full bg-black/70 px-3 py-1 text-xs font-extrabold text-white">หมด / Out of stock</span>
